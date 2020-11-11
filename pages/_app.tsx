@@ -3,10 +3,10 @@ import App from 'next/app';
 import AntHeader from '../components/AntHeader';
 import AntFooter from '../components/AntFooter';
 
-import '../styles/antd.less';
 import Banner from '../components/Banner';
+import '../styles/antd.less';
 
-class MyApp extends App {
+export default class MyApp extends App {
   render() {
     const { Component, pageProps } = this.props;
 
@@ -31,5 +31,3 @@ class MyApp extends App {
     );
   }
 }
-
-export default MyApp;
