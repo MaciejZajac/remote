@@ -1,5 +1,4 @@
 import { Button, Col, Menu, Row, Space } from 'antd';
-import { Header } from 'antd/lib/layout/layout';
 import Link from 'next/link';
 
 const AntHeader = () => {

@@ -11,7 +11,6 @@ import {
 } from 'antd';
 import { useRouter } from 'next/router';
 const { Title, Text } = Typography;
-import Link from 'next/link';
 interface IOfferDetails {
   offerDetails: IOfferNode;
 }
