@@ -1,4 +1,4 @@
-import { Col, Menu, Row } from 'antd';
+import { Button, Col, Menu, Row } from 'antd';
 import {
   MailOutlined,
   AppstoreOutlined,
@@ -28,7 +28,9 @@ const AntHeader = () => {
 
         <div>
           <Menu mode='horizontal'>
-            <Menu.Item key='postajob'>Post a job (FREE!)</Menu.Item>
+            <Menu.Item key='postajob'>
+              <Button type='primary'>Post a job (FREE!)</Button>
+            </Menu.Item>
             {/* <Menu.Item key='about'>About us</Menu.Item>
             <Menu.Item key='contact'>Contact</Menu.Item> */}
             <Menu.Item key='login'>Login</Menu.Item>
