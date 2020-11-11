@@ -6,9 +6,9 @@ const JobOffers = () => {
   return (
     <div>
       <Row>
-        <Col xl={18} offset={3}>
+        <Col xl={24}>
           {pageItems.map((item: IPageItem) => (
-            <Link href='#' key={item.offerId}>
+            <Link href={`/offer/${item.companyName}`} key={item.offerId}>
               <a>
                 <Card style={{ margin: '15px 0' }}>
                   <Space size={20}>

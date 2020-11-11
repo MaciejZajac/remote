@@ -1,17 +1,24 @@
-import { Button, Col, Menu, Row } from 'antd';
+import { Button, Col, Menu, Row, Space } from 'antd';
+import { Header } from 'antd/lib/layout/layout';
 import Link from 'next/link';
 
 const AntHeader = () => {
   return (
     <Row>
       <Col
-        xl={18}
-        offset={3}
-        style={{ display: 'flex', justifyContent: 'space-between' }}
+        xl={24}
+        style={{
+          maxWidth: '1366px',
+          margin: '0 auto',
+          display: 'flex',
+          justifyContent: 'space-between',
+        }}
       >
-        <div>
+        <Space size={10}>
+          <Link href='/'>
+            <a>Under Palm Jobs</a>
+          </Link>
           <Menu mode='horizontal'>
-            <Menu.Item key='logo'>Under Palm Jobs</Menu.Item>
             <Menu.Item key='offers'>
               <Link href='/'>
                 <a>Offers</a>
@@ -26,7 +33,7 @@ const AntHeader = () => {
               Blog
             </Menu.Item> */}
           </Menu>
-        </div>
+        </Space>
 
         <div>
           <Menu mode='horizontal'>
