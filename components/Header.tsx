@@ -4,7 +4,7 @@ import {
   AppstoreOutlined,
   SettingOutlined,
 } from '@ant-design/icons';
-
+import Link from 'next/link';
 const { SubMenu } = Menu;
 
 const AntHeader = () => {
@@ -19,7 +19,11 @@ const AntHeader = () => {
           <Menu mode='horizontal'>
             <Menu.Item key='logo'>Under Palm Job</Menu.Item>
             <Menu.Item key='offers'>Offers</Menu.Item>
-            <Menu.Item key='companies'>Companies</Menu.Item>
+            <Menu.Item key='companies'>
+              <Link href='/companies'>
+                <a>Companies</a>
+              </Link>
+            </Menu.Item>
             {/* <Menu.Item key='blog' disabled>
               Blog
             </Menu.Item> */}
