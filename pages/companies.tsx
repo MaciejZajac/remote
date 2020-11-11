@@ -1,6 +1,6 @@
 import React from 'react';
 import CompaniesList from '../components/CompaniesList';
-import AntHeader from '../components/Header';
+import AntHeader from '../components/AntHeader';
 
 function companies() {
   return (

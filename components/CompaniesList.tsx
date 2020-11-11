@@ -1,9 +1,8 @@
 import React from 'react';
 import Avatar from 'antd/lib/avatar/avatar';
-import { Card, Col, Row, Space, Typography } from 'antd';
-import { EllipsisOutlined } from '@ant-design/icons';
+import { Card, Col, Divider, Row, Space, Typography } from 'antd';
+import { TeamOutlined, AimOutlined, BlockOutlined } from '@ant-design/icons';
 import Link from 'next/link';
-const { Meta } = Card;
 
 const CompaniesList = () => {
   return (
@@ -31,6 +30,23 @@ const CompaniesList = () => {
                       </div>
                       <Typography.Text>{item.shortDescription}</Typography.Text>
                     </div>
+                  </Space>
+                  <Divider style={{ margin: '10px 0' }} />
+                  <Space size={30}>
+                    <Space size={6}>
+                      <TeamOutlined />
+                      {item.companySize}
+                    </Space>
+
+                    <Space size={6}>
+                      <BlockOutlined />
+                      {item.companyType}
+                    </Space>
+
+                    <Space size={6}>
+                      <AimOutlined />
+                      {item.jobOffersNumber}
+                    </Space>
                   </Space>
                 </Card>
               </a>
@@ -62,7 +78,7 @@ const companiesArr: ICompanyItem[] = [
   {
     address: { id: 373 },
     companyId: '0xw3xg',
-    companySize: '_1001_PLUS',
+    companySize: '1001<',
     companyType: 'STARTUP',
     companyUrl: '0xw3xg-stripe',
     jobOffersNumber: 19,
@@ -73,7 +89,7 @@ const companiesArr: ICompanyItem[] = [
   {
     address: { id: 127 },
     companyId: 'vmkds8',
-    companySize: '_51_250',
+    companySize: '51 - 250',
     companyType: 'SOFTWARE_HOUSE',
     companyUrl: 'vmkds8-clevertech',
     jobOffersNumber: 19,
@@ -84,7 +100,7 @@ const companiesArr: ICompanyItem[] = [
   {
     address: { id: 598 },
     companyId: 'htftni',
-    companySize: '_1001_PLUS',
+    companySize: '1001<',
     companyType: 'STARTUP',
     companyUrl: 'htftni-twitter',
     jobOffersNumber: 3,
@@ -95,7 +111,7 @@ const companiesArr: ICompanyItem[] = [
   {
     address: { id: 85 },
     companyId: 'jjrozu',
-    companySize: '_51_250',
+    companySize: '51-250',
     companyType: 'STARTUP',
     companyUrl: 'jjrozu-netlify',
     jobOffersNumber: 3,

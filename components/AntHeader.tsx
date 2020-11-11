@@ -1,11 +1,5 @@
 import { Button, Col, Menu, Row } from 'antd';
-import {
-  MailOutlined,
-  AppstoreOutlined,
-  SettingOutlined,
-} from '@ant-design/icons';
 import Link from 'next/link';
-const { SubMenu } = Menu;
 
 const AntHeader = () => {
   return (
@@ -17,8 +11,12 @@ const AntHeader = () => {
       >
         <div>
           <Menu mode='horizontal'>
-            <Menu.Item key='logo'>Under Palm Job</Menu.Item>
-            <Menu.Item key='offers'>Offers</Menu.Item>
+            <Menu.Item key='logo'>Under Palm Jobs</Menu.Item>
+            <Menu.Item key='offers'>
+              <Link href='/'>
+                <a>Offers</a>
+              </Link>
+            </Menu.Item>
             <Menu.Item key='companies'>
               <Link href='/companies'>
                 <a>Companies</a>
