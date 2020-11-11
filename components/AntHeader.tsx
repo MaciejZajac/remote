@@ -122,7 +122,11 @@ const AntHeader = () => {
               </Menu.Item>
               {/* <Menu.Item key='about'>About us</Menu.Item>
             <Menu.Item key='contact'>Contact</Menu.Item> */}
-              <Menu.Item key='login'>Login</Menu.Item>
+              <Menu.Item key='login'>
+                <Link href='/login'>
+                  <a>Login</a>
+                </Link>
+              </Menu.Item>
             </Menu>
           </div>
         </Col>
