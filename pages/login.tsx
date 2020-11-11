@@ -5,7 +5,7 @@ import { GoogleLogin } from 'react-google-login';
 const responseGoogle = (response) => {
   console.log(response);
 };
-// 2AVuYZoPnleNro9EU8IHn43G
+
 const Login = () => {
   return (
     <div
