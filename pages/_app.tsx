@@ -4,19 +4,30 @@ import AntHeader from '../components/AntHeader';
 import AntFooter from '../components/AntFooter';
 
 import '../styles/antd.less';
+import Banner from '../components/Banner';
 
 class MyApp extends App {
   render() {
     const { Component, pageProps } = this.props;
 
     return (
-      <>
+      <div
+        style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}
+      >
         <AntHeader />
-        <div style={{ maxWidth: '1366px', margin: '0 auto' }}>
+        <div
+          style={{
+            maxWidth: '1366px',
+            margin: '0 auto',
+            width: '100%',
+            flexGrow: 1,
+          }}
+        >
           <Component {...pageProps} />
         </div>
+        <Banner />
         <AntFooter />
-      </>
+      </div>
     );
   }
 }
