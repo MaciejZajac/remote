@@ -18,7 +18,7 @@ interface IOfferDetails {
 const OfferDetails = ({ offerDetails }: IOfferDetails) => {
   const router = useRouter();
   const handleApplyAction = () => {
-    console.log('handleApplyAction@@@');
+    //
   };
   return (
     <div style={{ maxWidth: '1366px', margin: '0 auto' }}>

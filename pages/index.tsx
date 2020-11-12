@@ -1,5 +1,4 @@
-import AntHeader from '../components/AntHeader';
-import JobOffers from '../components/JobOffers';
+import JobOffers from '../components/Offers/JobOffers';
 
 export default function Home() {
   return <JobOffers />;

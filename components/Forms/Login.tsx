@@ -1,29 +1,31 @@
 import { gql, useMutation } from '@apollo/client';
-import { Form, Input, Button, Checkbox, Row, Col, Typography } from 'antd';
-import { useState } from 'react';
-import Login from '../pages/login';
+import { Form, Input, Button, Row, Col, Typography } from 'antd';
+import { useContext, useState } from 'react';
 import Router from 'next/router';
-const Register = () => {
+import { AuthContext } from '../../context/AuthContext';
+
+const Login = () => {
+  const { login } = useContext(AuthContext);
   const [errors, setErrors] = useState<any>({});
   const [formData, setFormData] = useState<any>({});
   console.log('formData', formData);
 
   const onFinish = (values) => {
-    // console.log('Success:', values);
-    createUser();
     setFormData(values);
+    createUser();
   };
 
-  const [createUser, { data }] = useMutation(REGISTER_USER, {
+  const [createUser, { data }] = useMutation(LOGIN_USER, {
     update(proxy, { data }) {
-      console.log('data', data);
-      Router.push('/');
+      login(data);
+      // Router.push('/');
     },
     onError(err) {
-      console.log('formData', formData);
       setErrors(err.graphQLErrors[0]?.extensions?.exception?.errors);
     },
-    variables: formData,
+    variables: {
+      ...formData,
+    },
   });
 
   const onFinishFailed = (errorInfo) => {
@@ -33,13 +35,8 @@ const Register = () => {
   return (
     <Row style={{ marginTop: '40px' }}>
       <Col xl={10} offset={7}>
-        <Typography.Title level={2}>Register</Typography.Title>
-        <Form
-          name='basic'
-          initialValues={{ remember: true }}
-          onFinish={onFinish}
-          onFinishFailed={onFinishFailed}
-        >
+        <Typography.Title level={2}>Login</Typography.Title>
+        <Form name='basic' onFinish={onFinish} onFinishFailed={onFinishFailed}>
           <Form.Item
             name='email'
             rules={[
@@ -67,23 +64,9 @@ const Register = () => {
             <Input.Password placeholder='Password' />
           </Form.Item>
 
-          <Form.Item
-            name='confirmPassword'
-            rules={[
-              {
-                required: true,
-                message: 'Passwords must match',
-                min: 4,
-                max: 30,
-              },
-            ]}
-          >
-            <Input.Password placeholder='Confirm password' />
-          </Form.Item>
-
           <Form.Item>
-            <Button type='primary' htmlType='submit'>
-              Submit
+            <Button size='large' type='primary' htmlType='submit'>
+              Login
             </Button>
           </Form.Item>
         </Form>
@@ -92,9 +75,9 @@ const Register = () => {
   );
 };
 
-const REGISTER_USER = gql`
-  mutation register($email: String!, $password: String!) {
-    register(registerInput: { email: $email, password: $password }) {
+const LOGIN_USER = gql`
+  mutation login($email: String!, $password: String!) {
+    login(email: $email, password: $password) {
       id
       email
       createdAt
@@ -103,4 +86,4 @@ const REGISTER_USER = gql`
   }
 `;
 
-export default Register;
+export default Login;

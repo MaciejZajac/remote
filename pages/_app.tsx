@@ -1,32 +1,37 @@
 import React from 'react';
-import AntHeader from '../components/AntHeader';
-import AntFooter from '../components/AntFooter';
+import AntHeader from '../components/Layout/AntHeader';
+import AntFooter from '../components/Layout/AntFooter';
 import withData from '../lib/apolloClient';
 import { ApolloProvider } from '@apollo/client';
+import { AuthProvider } from '../context/AuthContext';
 
-import Banner from '../components/Banner';
 import '../styles/antd.less';
 
 function App({ Component, pageProps, apollo }) {
   return (
     <ApolloProvider client={apollo}>
-      <div
-        style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}
-      >
-        <AntHeader />
+      <AuthProvider>
         <div
           style={{
-            maxWidth: '1366px',
-            margin: '0 auto',
-            width: '100%',
-            flexGrow: 1,
+            display: 'flex',
+            flexDirection: 'column',
+            minHeight: '100vh',
           }}
         >
-          <Component {...pageProps} />
+          <AntHeader />
+          <div
+            style={{
+              maxWidth: '1366px',
+              margin: '0 auto',
+              width: '100%',
+              flexGrow: 1,
+            }}
+          >
+            <Component {...pageProps} />
+          </div>
+          <AntFooter />
         </div>
-        <Banner />
-        <AntFooter />
-      </div>
+      </AuthProvider>
     </ApolloProvider>
   );
 }

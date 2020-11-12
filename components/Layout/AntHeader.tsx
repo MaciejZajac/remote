@@ -3,12 +3,16 @@ import Link from 'next/link';
 import Head from 'next/head';
 import Router from 'next/router';
 import NProgress from 'nprogress';
+import { useContext } from 'react';
+import { AuthContext } from '../../context/AuthContext';
 
 Router.events.on('routeChangeStart', () => NProgress.start());
 Router.events.on('routeChangeComplete', () => NProgress.done());
 Router.events.on('routeChangeError', () => NProgress.done());
 
 const AntHeader = () => {
+  const { login, logout, user } = useContext(AuthContext);
+  console.log(user);
   return (
     <>
       <Head>
@@ -123,9 +127,13 @@ const AntHeader = () => {
               {/* <Menu.Item key='about'>About us</Menu.Item>
             <Menu.Item key='contact'>Contact</Menu.Item> */}
               <Menu.Item key='login'>
-                <Link href='/login'>
-                  <a>Login</a>
-                </Link>
+                {user ? (
+                  <span onClick={logout}>Logout</span>
+                ) : (
+                  <Link href='/login'>
+                    <a>Login</a>
+                  </Link>
+                )}
               </Menu.Item>
             </Menu>
           </div>
