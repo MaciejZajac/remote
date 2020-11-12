@@ -1,16 +1,15 @@
 import React from 'react';
-import App from 'next/app';
 import AntHeader from '../components/AntHeader';
 import AntFooter from '../components/AntFooter';
+import withData from '../lib/apolloClient';
+import { ApolloProvider } from '@apollo/client';
 
 import Banner from '../components/Banner';
 import '../styles/antd.less';
 
-export default class MyApp extends App {
-  render() {
-    const { Component, pageProps } = this.props;
-
-    return (
+function App({ Component, pageProps, apollo }) {
+  return (
+    <ApolloProvider client={apollo}>
       <div
         style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}
       >
@@ -28,6 +27,8 @@ export default class MyApp extends App {
         <Banner />
         <AntFooter />
       </div>
-    );
-  }
+    </ApolloProvider>
+  );
 }
+
+export default withData(App);
