@@ -5,14 +5,14 @@ import Router from 'next/router';
 import NProgress from 'nprogress';
 import { useContext } from 'react';
 import { AuthContext } from '../../context/AuthContext';
+import { useApolloClient, useQuery } from '@apollo/client';
 
 Router.events.on('routeChangeStart', () => NProgress.start());
 Router.events.on('routeChangeComplete', () => NProgress.done());
 Router.events.on('routeChangeError', () => NProgress.done());
 
 const AntHeader = () => {
-  const { login, logout, user } = useContext(AuthContext);
-  console.log(user);
+  const { logout, user } = useContext(AuthContext);
   return (
     <>
       <Head>
@@ -122,7 +122,11 @@ const AntHeader = () => {
           <div>
             <Menu mode='horizontal'>
               <Menu.Item key='postajob'>
-                <Button type='primary'>Post a job (FREE!)</Button>
+                <Link href='/postJob'>
+                  <a>
+                    <Button type='primary'>Post a job (FREE!)</Button>
+                  </a>
+                </Link>
               </Menu.Item>
               {/* <Menu.Item key='about'>About us</Menu.Item>
             <Menu.Item key='contact'>Contact</Menu.Item> */}

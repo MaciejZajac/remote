@@ -1,4 +1,3 @@
-import React from 'react';
 import Avatar from 'antd/lib/avatar/avatar';
 import { Card, Col, Divider, Row, Space, Typography } from 'antd';
 import { TeamOutlined, AimOutlined, BlockOutlined } from '@ant-design/icons';

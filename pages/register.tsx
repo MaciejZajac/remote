@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { GoogleLogin } from 'react-google-login';
 import Register from '../components/Forms/Register';
 

@@ -8,7 +8,6 @@ const Login = () => {
   const { login } = useContext(AuthContext);
   const [errors, setErrors] = useState<any>({});
   const [formData, setFormData] = useState<any>({});
-  console.log('formData', formData);
 
   const onFinish = (values) => {
     setFormData(values);
@@ -18,7 +17,7 @@ const Login = () => {
   const [createUser, { data }] = useMutation(LOGIN_USER, {
     update(proxy, { data }) {
       login(data);
-      // Router.push('/');
+      Router.push('/');
     },
     onError(err) {
       setErrors(err.graphQLErrors[0]?.extensions?.exception?.errors);

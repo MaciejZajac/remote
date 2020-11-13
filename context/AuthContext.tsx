@@ -1,5 +1,8 @@
-import { createContext, useReducer } from 'react';
-import jwtDecode from 'jwt-decode';
+import { createContext, useEffect, useReducer } from 'react';
+import cookieCutter from 'cookie-cutter';
+import { useApolloClient } from '@apollo/client';
+import { useRouter } from 'next/router';
+
 interface IAuthContext {
   user: any;
   login: (item: any) => void;
@@ -45,21 +48,46 @@ function authReducer(state: any, action: any) {
   }
 }
 
+interface ILoginData {
+  login: {
+    createdAt: string;
+    email: string;
+    id: string;
+    token: string;
+  };
+}
 function AuthProvider(props: any) {
+  const apolloClient = useApolloClient();
+  const router = useRouter();
   const [state, dispatch] = useReducer(authReducer, initialState);
 
-  function login(userData: any) {
-    console.log('userData', userData);
-    // localStorage.setItem('jwtToken', userData.token);
+  useEffect(() => {
+    const cookie = cookieCutter.get('token');
+    if (cookie) {
+      dispatch({
+        type: 'LOGIN',
+        payload: login,
+      });
+    }
+  }, []);
+
+  function login({ login }: ILoginData) {
+    const { token } = login;
+    cookieCutter.set('token', token);
+
     dispatch({
       type: 'LOGIN',
-      payload: userData,
+      payload: login,
     });
   }
 
-  function logout() {
+  async function logout() {
+    await apolloClient.clearStore();
+    cookieCutter.set('token', '', { expires: new Date(0) });
+
     // localStorage.removeItem('jwtToken');
     dispatch({ type: 'LOGOUT' });
+    router.push('/');
   }
 
   return (

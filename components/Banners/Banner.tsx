@@ -1,4 +1,3 @@
-import React from 'react';
 import { Button, Col, Divider, Row, Space, Typography } from 'antd';
 import Link from 'next/link';
 

@@ -1,5 +1,4 @@
-import React from 'react';
-import OfferDetails, { IOfferNode } from '../../components/OfferDetails';
+import OfferDetails, { IOfferNode } from '../../components/Offers/OfferDetails';
 function Company() {
   return <OfferDetails offerDetails={mockOfferNode} />;
 }

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Footer } from 'antd/lib/layout/layout';
 import { GithubOutlined, LinkedinOutlined } from '@ant-design/icons';
 import { Space } from 'antd';

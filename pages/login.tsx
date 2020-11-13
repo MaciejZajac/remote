@@ -1,6 +1,5 @@
 import { Col, Row, Typography } from 'antd';
 import Link from 'next/link';
-import React from 'react';
 
 import { GoogleLogin } from 'react-google-login';
 import Login from '../components/Forms/Login';
