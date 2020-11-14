@@ -1,9 +1,15 @@
-import { ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
-import withApollo from 'next-with-apollo';
+import React from 'react';
+import {
+  ApolloClient,
+  InMemoryCache,
+  createHttpLink,
+  NormalizedCacheObject,
+} from '@apollo/client';
+import withApollo, { ApolloContext } from 'next-with-apollo';
 import fetch from 'isomorphic-unfetch';
 import { setContext } from 'apollo-link-context';
 import cookieCutter from 'cookie-cutter';
-
+import NextApp, { AppInitialProps } from 'next/app';
 const httpLink = createHttpLink({
   fetch, // Switches between unfetch & node-fetch for client & server.
   uri: 'http://localhost:4000',

@@ -2,6 +2,7 @@ import { createContext, useEffect, useReducer } from 'react';
 import cookieCutter from 'cookie-cutter';
 import { useApolloClient } from '@apollo/client';
 import { useRouter } from 'next/router';
+import jwt_decode from 'jwt-decode';
 
 interface IAuthContext {
   user: any;
@@ -64,20 +65,30 @@ function AuthProvider(props: any) {
   useEffect(() => {
     const cookie = cookieCutter.get('token');
     if (cookie) {
+      // const decoded = jwt.
+      const decoded: any = jwt_decode(cookie);
+      const user = {
+        email: decoded.email,
+        id: decoded.id,
+      };
+      console.log('user', user);
       dispatch({
         type: 'LOGIN',
-        payload: login,
+        payload: user,
       });
     }
   }, []);
 
   function login({ login }: ILoginData) {
-    const { token } = login;
+    const { token, email, id } = login;
     cookieCutter.set('token', token);
-
+    const user = {
+      email,
+      id,
+    };
     dispatch({
       type: 'LOGIN',
-      payload: login,
+      payload: user,
     });
   }
 

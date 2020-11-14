@@ -15,15 +15,15 @@
 //   return class AuthComponent extends React.Component<T> {
 //     static async getInitialProps({ apolloClient, ...ctx }) {
 //       console.log('apolloClient', apolloClient);
-//       const { data, loading, error } = await apolloClient.query({
-//         query: ViewerQuery,
-//       });
-//       if (!data || !data.id) {
-//         redirect(ctx, '/');
-//         return {
-//           me: null,
-//         };
-//       }
+//       // const { data, loading, error } = await apolloClient.query({
+//       //   query: ViewerQuery,
+//       // });
+//       // if (!data || !data.id) {
+//       //   redirect(ctx, '/');
+//       //   return {
+//       //     me: null,
+//       //   };
+//       // }
 
 //       return {
 //         me: true,

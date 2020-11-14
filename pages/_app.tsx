@@ -1,18 +1,17 @@
 import React from 'react';
 import AntHeader from '../components/Layout/AntHeader';
 import AntFooter from '../components/Layout/AntFooter';
-import withData from '../lib/apolloClient';
+import withApollo from '../lib/apolloClient';
 import { ApolloProvider } from '@apollo/client';
 import { AuthProvider } from '../context/AuthContext';
 import '../styles/antd.less';
+import { PostJobProvider } from '../context/PostOfferContext';
 
-class App extends React.Component<any> {
-  render() {
-    const { Component, pageProps, apollo } = this.props;
-
-    return (
-      <ApolloProvider client={apollo}>
-        <AuthProvider>
+function App({ Component, pageProps, apollo }) {
+  return (
+    <ApolloProvider client={apollo}>
+      <AuthProvider>
+        <PostJobProvider>
           <div
             style={{
               display: 'flex',
@@ -33,10 +32,10 @@ class App extends React.Component<any> {
             </div>
             <AntFooter />
           </div>
-        </AuthProvider>
-      </ApolloProvider>
-    );
-  }
+        </PostJobProvider>
+      </AuthProvider>
+    </ApolloProvider>
+  );
 }
 
-export default withData(App);
+export default withApollo(App);
